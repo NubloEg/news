@@ -4,7 +4,43 @@
   border-radius: 12px;
 }
 
-.footer {
+.header {
   display: flex;
   justify-content: space-between;
+}
+
+.header h3 {
+  margin: 0;
+}
+
+.content {
+  word-break: break-all;
+}
+
+.actions {
+  align-self: self-start;
+  display: flex;
+  gap: 8px;
+}
+
+.pen {
+  filter: invert(22%) sepia(98%) saturate(6296%) hue-rotate(237deg)
+    brightness(80%) contrast(93%);
+}
+
+.pen:hover {
+  cursor: pointer;
+  filter: invert(22%) sepia(98%) saturate(6296%) hue-rotate(237deg)
+    brightness(100%) contrast(150%);
+}
+
+.trash {
+  filter: invert(16%) sepia(95%) saturate(4859%) hue-rotate(352deg)
+    brightness(80%) contrast(85%);
+}
+
+.trash:hover {
+  cursor: pointer;
+  filter: invert(16%) sepia(95%) saturate(4859%) hue-rotate(352deg)
+    brightness(90%) contrast(102%);
 }

@@ -1,17 +1,21 @@
 import React from "react";
 import type { Article } from "../../App";
 import s from "./ArticleModal.module.css";
+import UIButton from "../ui/UIButton/UIButton";
 
 export default function ArticleModal({
+  article,
   onSave,
   onClose,
 }: {
+  article?: Article;
   onSave: (article: Article) => void;
   onClose: VoidFunction;
 }) {
-  const [title, setTitle] = React.useState("");
-  const [content, setContent] = React.useState("");
-  const [error, setError] = React.useState(false);
+  const [title, setTitle] = React.useState(article?.title ?? "");
+  const [content, setContent] = React.useState(article?.content ?? "");
+  const [errorTitle, setErrorTitle] = React.useState(false);
+  const [errorContent, setErrorContent] = React.useState(false);
 
   function getFullDate(): string {
     const date = new Date();
@@ -31,18 +35,24 @@ export default function ArticleModal({
   }
 
   function onSaveClick() {
-    const article: Article = {
-      id: Date.now().toString(),
+    const newArticle: Article = {
+      id: article?.id ?? Date.now().toString(),
       title: title,
       content: content,
       publishedAt: getFullDate(),
     };
 
-    if (title.trim() === "" || content.trim() === "") {
-      setError(true);
+    const trimTitle = title.trim() === "";
+    const trimContent = content.trim() === "";
+
+    if (trimTitle || trimContent) {
+      setErrorTitle(trimTitle);
+      setErrorContent(trimContent);
+
       return;
     }
-    onSave(article);
+
+    onSave(newArticle);
     onClose();
   }
 
@@ -51,23 +61,24 @@ export default function ArticleModal({
       <div onClick={(e) => e.stopPropagation()} className={s.wrapper}>
         <h3>Создать новость</h3>
         <input
-          className={error ? s.error : undefined}
+          className={`${s.input} ${errorTitle ? s.error : ""}`}
           onChange={(e) => {
-            setError(false);
+            setErrorTitle(false);
             setTitle(e.target.value);
           }}
           value={title}
         />
         <textarea
-          className={error ? s.error : undefined}
-          style={{ resize: "none", minHeight: "140px" }}
+          className={`${s.textarea} ${errorContent ? s.error : ""}`}
           onChange={(e) => {
-            setError(false);
+            setErrorContent(false);
             setContent(e.target.value);
           }}
           value={content}
         ></textarea>
-        <button onClick={onSaveClick}>Сохранить</button>
+        <UIButton variant="create" onClick={onSaveClick}>
+          Сохранить
+        </UIButton>
       </div>
     </div>
   );

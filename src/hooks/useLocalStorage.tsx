@@ -4,13 +4,12 @@ export function useLocalStorage<T>(
   key: string,
   initialValue: T
 ): [T, (value: T) => void] {
-  // Инициализация состояния с чтением из localStorage
   const [value, setValue] = useState<T>(() => {
     try {
       const storedValue = localStorage.getItem(key);
       return storedValue ? JSON.parse(storedValue) : initialValue;
     } catch (error) {
-      console.error('Error reading localStorage key "' + key + '":', error);
+      console.error('Не могу прочитать значение по ключу "' + key + '":', error);
       return initialValue;
     }
   });
@@ -22,10 +21,7 @@ export function useLocalStorage<T>(
           const newValue = e.newValue ? JSON.parse(e.newValue) : initialValue;
           setValue(newValue);
         } catch (error) {
-          console.error(
-            'Error parsing localStorage newValue for key "' + key + '":',
-            error
-          );
+          console.error('Не могу спарсить значение "' + key + '":', error);
         }
       }
     };
@@ -37,7 +33,6 @@ export function useLocalStorage<T>(
     };
   }, [key, initialValue]);
 
-  // Функция для обновления значения в состоянии и localStorage
   const setStoredValue = (newValue: T) => {
     try {
       const valueToStore =
@@ -45,7 +40,6 @@ export function useLocalStorage<T>(
       setValue(valueToStore);
       localStorage.setItem(key, JSON.stringify(valueToStore));
 
-      // Генерируем событие для текущей вкладки
       window.dispatchEvent(
         new StorageEvent("storage", {
           key,
@@ -53,7 +47,7 @@ export function useLocalStorage<T>(
         })
       );
     } catch (error) {
-      console.error('Error setting localStorage key "' + key + '":', error);
+      console.error('Ошибка "' + key + '":', error);
     }
   };
 
