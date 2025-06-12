@@ -1,0 +1,10 @@
+.article {
+  padding: 16px;
+  border: 1px solid grey;
+  border-radius: 12px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}

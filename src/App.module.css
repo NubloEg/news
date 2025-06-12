@@ -1,0 +1,38 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.app h1 {
+  text-align: center;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.createButton {
+  padding: 8px;
+  max-width: 200px;
+  margin: 0 24px;
+}
+
+.empty {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  color: rgb(157, 157, 157);
+}
+
+@media (max-width: 450px) {
+  .createButton {
+    max-width: 100%;
+  }
+}
