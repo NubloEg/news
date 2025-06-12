@@ -1,7 +1,7 @@
 import type { Article } from "../../App";
 import s from "./Article.module.css";
-import { pen } from "../../assets/pen.svg";
-import { trash } from "../../assets/trash.svg";
+import pen from "../../assets/pen.svg";
+import trash from "../../assets/trash.svg";
 
 interface Props extends Article {
   onRemove: (articleId: string) => void;
