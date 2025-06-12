@@ -38,7 +38,9 @@ export default function Article({
         </div>
       </div>
       <p className={s.content}>{content}</p>
-      <span>{publishedAt}</span>
+      <div className={s.footer}>
+        <span>{publishedAt}</span>
+      </div>
     </div>
   );
 }

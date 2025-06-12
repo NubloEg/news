@@ -20,6 +20,7 @@
 .createButton {
   max-width: 200px;
   margin: 0 24px;
+  align-self: flex-end;
 }
 
 .empty {

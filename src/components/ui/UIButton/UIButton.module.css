@@ -13,7 +13,8 @@
   font-weight: bold;
 }
 
-.add:hover {
+.add:hover,
+.add:focus {
   background: rgb(0, 55, 255);
 }
 
@@ -24,6 +25,7 @@
   color: rgb(0, 0, 0);
 }
 
-.create:hover {
+.create:hover,
+.create:focus {
   background: rgb(57, 217, 51);
 }

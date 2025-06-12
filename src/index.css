@@ -4,3 +4,7 @@ body {
   min-height: 100dvh;
   overflow: hidden;
 }
+
+*:focus-visible {
+  outline: none;
+}

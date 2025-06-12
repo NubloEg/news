@@ -40,13 +40,6 @@ function App() {
 
   return (
     <div className={s.app}>
-      {toggleModal.isOpen ? (
-        <ArticleModal
-          onClose={() => setToggleModal({ isOpen: false, article: undefined })}
-          onSave={onSaveArticle}
-          article={toggleModal.article}
-        />
-      ) : null}
       <h1>Страница новостей</h1>
       <UIButton
         className={s.createButton}
@@ -75,6 +68,13 @@ function App() {
           </div>
         )}
       </div>
+      {toggleModal.isOpen ? (
+        <ArticleModal
+          onClose={() => setToggleModal({ isOpen: false, article: undefined })}
+          onSave={onSaveArticle}
+          article={toggleModal.article}
+        />
+      ) : null}
     </div>
   );
 }

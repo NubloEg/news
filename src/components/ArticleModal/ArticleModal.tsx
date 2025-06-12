@@ -25,7 +25,7 @@ export default function ArticleModal({
     const hour = date.getHours();
     const minutes = date.getMinutes();
 
-    return `${formater(day)}-${formater(month)}-${formater(year)} ${formater(
+    return `${formater(day)}.${formater(month)}.${formater(year)} ${formater(
       hour
     )}:${formater(minutes)}`;
   }
