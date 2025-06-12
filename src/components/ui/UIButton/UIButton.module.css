@@ -1,0 +1,29 @@
+.button {
+  outline: none;
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.add {
+  padding: 12px;
+  border-radius: 4px;
+  background: rgb(0, 115, 255);
+  color: white;
+  font-weight: bold;
+}
+
+.add:hover {
+  background: rgb(0, 55, 255);
+}
+
+.create {
+  padding: 8px;
+  border-radius: 8px;
+  background: rgb(51, 217, 101);
+  color: rgb(0, 0, 0);
+}
+
+.create:hover {
+  background: rgb(57, 217, 51);
+}

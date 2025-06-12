@@ -3,7 +3,7 @@ import s from "./Article.module.css";
 
 interface Props extends Article {
   onRemove: (articleId: string) => void;
-  onChange: () => void;
+  onChange: (articleId: string) => void;
 }
 
 export default function Article({
@@ -12,18 +12,31 @@ export default function Article({
   publishedAt,
   title,
   onRemove,
+  onChange,
 }: Props) {
   return (
     <div className={s.article}>
-      <h3>{title}</h3>
-      <p>{content}</p>
-      <div className={s.footer}>
-        <span>{publishedAt}</span>
-        <div>
-          <button onClick={() => localStorage.getItem}>Редактировать</button>
-          <button onClick={() => onRemove(id)}>Удалить пост</button>
+      <div className={s.header}>
+        <h3>{title}</h3>
+        <div className={s.actions}>
+          <img
+            className={s.pen}
+            onClick={() => onChange(id)}
+            src="/public/pen.svg"
+            width="24px"
+            alt="pen"
+          />
+          <img
+            className={s.trash}
+            onClick={() => onRemove(id)}
+            src="/public/trash.svg"
+            width="24px"
+            alt="trash"
+          />
         </div>
       </div>
+      <p className={s.content}>{content}</p>
+      <span>{publishedAt}</span>
     </div>
   );
 }
