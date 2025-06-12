@@ -1,5 +1,7 @@
 import type { Article } from "../../App";
 import s from "./Article.module.css";
+import { pen } from "../../assets/pen.svg";
+import { trash } from "../../assets/trash.svg";
 
 interface Props extends Article {
   onRemove: (articleId: string) => void;
@@ -22,14 +24,14 @@ export default function Article({
           <img
             className={s.pen}
             onClick={() => onChange(id)}
-            src="/src/assets/pen.svg"
+            src={pen}
             width="24px"
             alt="pen"
           />
           <img
             className={s.trash}
             onClick={() => onRemove(id)}
-            src="/src/assets/trash.svg"
+            src={trash}
             width="24px"
             alt="trash"
           />
